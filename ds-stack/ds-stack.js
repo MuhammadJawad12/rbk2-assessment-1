@@ -3,7 +3,7 @@ var Stack = function() {
 };
 
 Stack.prototype.add=  function (value){
-	this._storage.push(value) ;
+	this._storage.unshift(value) ;
 }
 
 Stack.prototype.remove = function(){
