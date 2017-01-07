@@ -20,12 +20,13 @@ var makeHashTable = function() {
       else {
 
      for(var i = 0 ; i< this._storage.length ; i++){
-      if(this._storage[i][0] !== key){
+      if(this._storage[i][0] === key){
+     this._storage[i][1] = value ;
+
+      }else {
       val.push(key , value)
         this._storage.splice(index , 0 ,val) 
-
       }
-     this._storage[index][1] = value ;
      }
    }
      return this._storage;
