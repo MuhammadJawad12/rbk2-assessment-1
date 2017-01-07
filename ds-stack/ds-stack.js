@@ -1,3 +1,11 @@
 var Stack = function() {
-	//your code is here
+	this._storage =[] ;
 };
+
+Stack.prototype.add=  function (value){
+	this._storage.push(value) ;
+}
+
+Stack.prototype.remove = function(){
+	return this._storage.shift()
+}
