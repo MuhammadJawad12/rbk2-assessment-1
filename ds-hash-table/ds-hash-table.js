@@ -6,9 +6,11 @@ var makeHashTable = function() {
     retrieve: function(key) {
       // wanna loop over the storage and check for all the values in there 
       // if the key already exists in one of the inner arrays return the inner array 
-      for (var i = 0; i < this._storage.length; i++) {
-        if(this._storage[i][0] === key){
-          return this._storage[i] ;
+      var index= hashFn(key , max) ;
+
+      for (var i = 0; i < this._storage[index].length; i++) {
+        if(this._storage[index][i][0] === key){
+          return this._storage[index][i][1] ;
         }
       }
     },
@@ -16,18 +18,19 @@ var makeHashTable = function() {
     insert: function(key, value) {
       // wanna create an index to add values inside ot it ;
     var index= hashFn(key ,max) ;
+    this._storage[index] = [] ;
     var val  = [];
     // if our storage is empty we can add the values 
-    if(this._storage.length === 0){
-     val.push(key , value)
-     this._storage.splice(index , 0 ,val) 
+    if(this._storage[index].length === 0){
+      val.push(key,value)
+     this._storage[index].push(val)
      return this._storage;
    }
    //if the key already exists in one of the array there we wanna replace it's value 
        else {
-             for(var i = 0 ; i< this._storage.length ; i++){
-              if(this._storage[i][0] === key){
-               this._storage[i][1] = value ;
+             for(var i = 0 ; i< this._storage[index].length ; i++){
+              if(this._storage[index][i][0] === key){
+               this._storage[index][i][1] = value ;
 
              }
           }
